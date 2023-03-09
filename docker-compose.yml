@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+  bot:  
+    restart: always
+    ports:
+      - 9000:9000
+    env_file: .env
+    network_mode: "host" 
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes: 
+     - ./database.db:/go/database.db
+    build:
+      context: .
+      dockerfile: Dockerfile
